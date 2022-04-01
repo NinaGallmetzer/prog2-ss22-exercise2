@@ -6,25 +6,19 @@ import trafficlight.states.*;
 public class TrafficLightCtrl {
 
     private State greenState;
-
     private State redState;
-
     private State yellowState;
-
     private State offState;
-
     private State currentState;
-
     private State previousState;
-
     private TrafficLightGui gui;
-
     private int count;
 
     public TrafficLightCtrl() {
         super();
         initStates();
         gui = new TrafficLightGui(this);
+        gui.setLight(TrafficLightColor.RED);
         gui.setVisible(true);
     }
 
@@ -33,8 +27,8 @@ public class TrafficLightCtrl {
         redState    = new StateRed(this);
         yellowState = new StateYellow(this);
         offState    = new StateOff(this);
-        currentState  = new StateGreen(this);
-        previousState = new StateGreen(this);
+        previousState = redState;
+        currentState  = redState;
     }
 
     public State getGreenState() {
